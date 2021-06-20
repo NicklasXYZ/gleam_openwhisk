@@ -122,26 +122,26 @@ function main({name}) {
 }
 ```
 
-2. Create a package and an action (serverless funtion):
+2. Create a package and a serverless funtion:
 
 ```bash
 wsk -i package create demo && \
 wsk -i action create /guest/demo/hello hello.js --web true
 ```
 
-3. Trigger the action:
+3. Trigger the serverless function:
 
 ```bash
-# A: By invoking the action from the commandline:
+# A: By invoking the function from the commandline:
 wsk -i action invoke /guest/demo/hello --result --param name YourNameHere
 
-# B: By retrieving and visiting the URL that triggers the action:
+# B: By retrieving and visiting the URL that triggers the function:
 # * Retrieve URL
 wsk -i action get /guest/demo/hello --url
 
 # * Visit URL through a browser or curl
 curl -k -d '{"name": "YourNameHere"}' -H "Content-Type: application/json" -X POST https://localhost:31001/api/v1/web/guest/demo/hello; echo
-#... Use flag '-k to accept self-signed certificates
+#... Use flag '-k' to accept self-signed certificates
 ```
 
-For more information on how GET, POST, PUT and DELETE methods work, see the [OpenWhisk API gateway docs](https://github.com/apache/openwhisk/blob/master/docs/apigateway.md)
+For more information on how GET, POST, PUT and DELETE methods work see the [OpenWhisk API gateway docs](https://github.com/apache/openwhisk/blob/master/docs/apigateway.md)
