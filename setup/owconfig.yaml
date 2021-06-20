@@ -1,0 +1,18 @@
+# Single node config file
+affinity:
+  enabled: false
+
+toleration:
+  enabled: false
+
+invoker:
+  options: "-Dwhisk.kubernetes.user-pod-node-affinity.enabled=false"
+
+whisk:
+  ingress:
+    type: NodePort
+    api_host_name: http://localhost/
+    api_host_port: 31001
+
+nginx:
+  httpsNodePort: 31001
