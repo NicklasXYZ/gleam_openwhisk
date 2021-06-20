@@ -10,7 +10,7 @@ This repository contains [OpenWhisk](https://openwhisk.apache.org/) function tem
 2. Download the Gleam function templates from this repo and enter into the main directory:
 
 ```bash
-git clone https://github.com/nicklasxyz/gleam_openwhisk#main && \
+git clone https://github.com/nicklasxyz/gleam_openwhisk && \
 cd gleam_openwhisk
 ```
 
