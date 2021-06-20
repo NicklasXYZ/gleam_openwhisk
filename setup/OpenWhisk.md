@@ -106,7 +106,7 @@ wsk property set --apihost localhost:31001
 wsk property set --auth 23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP
 ```
 
-## Deploy & Run a JavaScript Test Function 
+## Deploy & run a JavaScript test function 
 
 1. Create a file `hello.js`:
 ```js
