@@ -7,7 +7,7 @@ WORKDIR /usr/src
 
 ENV GLEAM_VERSION v0.15.0
 
-# Install Rebar3, Gleam and make the function watchdog executable
+# Install Rebar3 and Gleam 
 RUN wget https://s3.amazonaws.com/rebar3/rebar3 && \
     chmod +x rebar3 && \
     cp rebar3 /usr/bin/rebar3 && \
@@ -40,4 +40,5 @@ COPY --from=builder /usr/src/_build/default/rel/gleam_openwhisk .
 
 EXPOSE 8080
 
+# Start the elli webserver and leave the process in the foreground
 CMD ["/bin/sh", "-lc", "/home/app/bin/gleam_openwhisk foreground"]
