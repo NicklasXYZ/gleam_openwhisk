@@ -26,9 +26,23 @@ pub fn run(req: Request(BitString)) {
   let json_data =
     req.body
     |> test_function()
+
+  // Note: A HTTP response is returned which disables the OpenWhisk API Gateway's
+  // default handling. As a consequence the response needs to contain a 'body' field
+  // that contains the normal payload. If the normal payload is not contained in this 
+  // field then the OpenWhisk API Gateway will generate a HTTP response with status
+  // code '204: No Content' and an empty body.
+  let body_start = bit_string.from_string("{\"body\":")
+  let body_end = bit_string.from_string("}")
+  let payload =
+    body_start
+    |> bit_string.append(json_data)
+    |> bit_string.append(body_end)
+
+  // Finalize the response by adding headers and setting the return data:
   http.response(200)
   |> http.prepend_resp_header("content-type", "application/json")
-  |> http.set_resp_body(json_data)
+  |> http.set_resp_body(payload)
 }
 
 // THE CODE BELOW IS FOR ILLUSTRATIONAL AND TESTING PURPOSES ONLY.
@@ -65,6 +79,7 @@ fn decode_data_test_function(data) {
   let Ok(string_data) =
     data
     |> bit_string.to_string()
+    |> io.debug()
 
   // Convert String to Gleam types
   let decoded_data =
