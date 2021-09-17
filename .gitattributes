@@ -1,1 +1,3 @@
-template/ linguist-detectable=true
+* linguist-vendored
+*.gleam linguist-vendored=false
+*.dockerfile linguist-vendored=false
